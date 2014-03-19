@@ -90,7 +90,6 @@ public class BookServiceHandler implements IHandler {
 		for (String key : keys) {
 			System.out.println(key);
 			if (key.contains(searchkey))
-				;
 			{
 				System.out.println("found it");
 
