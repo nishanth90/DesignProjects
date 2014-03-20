@@ -36,12 +36,18 @@ public class ControllerClass {
 		
 		String category = scanner.nextLine();
 		
+		System.out.println("Please Enter the Search Key");
+		
+		String searchKey = scanner.nextLine();
+		
+		scanner.close();
+		
 		Media mediaInstance = LibraryFactory.MediaFactory(category);
 		
 		RequestWrapper request = new RequestWrapper();
 		
 		request.setcategoryType(category);
-		request.setSearchKey("Bloch");
+		request.setSearchKey(searchKey);
 		
 		ResponseWrapper response =  mediaInstance.searchMedia(request);
 		if (response != null) {
@@ -51,7 +57,21 @@ public class ControllerClass {
 					System.out.println("The response printed is");
 					System.out.println(book.toString());
 					}
-			}			
+			}
+			if (response.getVcds() != null) {
+				List<VCD> vcds = response.getVcds();
+				for (VCD vcd : vcds) {
+					System.out.println("The response printed is");
+					System.out.println(vcd.toString());
+					}
+			}
+			if (response.getMagzines() != null) {
+				List<Magzines> magzns = response.getMagzines();
+				for (Magzines magz : magzns) {
+					System.out.println("The response printed is");
+					System.out.println(magz.toString());
+					}
+			}
 			
 		}
 		
