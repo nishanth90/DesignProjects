@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.lib.DomainObjects.Books;
+import com.lib.DomainObjects.Magzines;
+import com.lib.DomainObjects.VCD;
 import com.lib.interfaces.Media;
 import com.lib.loadData.DataLoader;
 import com.lib.utility.LibraryFactory;
