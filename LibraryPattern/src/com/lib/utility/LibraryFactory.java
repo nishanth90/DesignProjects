@@ -1,5 +1,6 @@
 package com.lib.utility;
 
+import com.lib.Fixed.DIGITALMEDIA;
 import com.lib.Fixed.PRINTMEDIA;
 import com.lib.implementation.DigitalMedia;
 import com.lib.implementation.PrintMedia;
@@ -15,10 +16,8 @@ public class LibraryFactory {
 		if(PRINTMEDIA.getType(category).equalsIgnoreCase(category)) {
 			return  PrintMedia.getInstance();
 		} 
-		else if(PRINTMEDIA.getType(category).equalsIgnoreCase(category)) {
-			
+		else if(DIGITALMEDIA.getType(category).equalsIgnoreCase(category)) {			
 			return DigitalMedia.getInstance();
-
 		}
 		else
 			return null;
