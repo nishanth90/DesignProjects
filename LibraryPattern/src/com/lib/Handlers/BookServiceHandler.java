@@ -8,7 +8,9 @@ import java.util.Set;
 import com.lib.DomainObjects.Books;
 import com.lib.DomainObjects.DomainObjects;
 import com.lib.interfaces.IHandler;
+import com.lib.response.BookResponseVO;
 import com.lib.store.LibraryStore;
+import com.lib.wrappers.EnhancedResponseWrapper;
 import com.lib.wrappers.RequestWrapper;
 import com.lib.wrappers.ResponseWrapper;
 
@@ -28,7 +30,7 @@ import com.lib.wrappers.ResponseWrapper;
 public class BookServiceHandler implements IHandler {
 
 	private Map<String, ? super DomainObjects> bookMap = null;
-	private ResponseWrapper response = new ResponseWrapper();
+	private EnhancedResponseWrapper response = new EnhancedResponseWrapper();
 
 	/*
 	 * 
@@ -49,8 +51,9 @@ public class BookServiceHandler implements IHandler {
 	 * 
 	 * 
 	 */
-	public ResponseWrapper rent(RequestWrapper requestBooks) {
-
+	public EnhancedResponseWrapper rent(RequestWrapper requestBooks) {
+		
+		BookResponseVO bookResponseVO = new BookResponseVO();
 		bookMap = LibraryStore.getStoreInstance().getLibraryMap();
 		List<Books> books = new ArrayList<Books>();
 		String searchkey = requestBooks.getSearchKey();
@@ -64,7 +67,8 @@ public class BookServiceHandler implements IHandler {
 			if (book.getNumOfCopies() != 0) {
 				book.setNumOfCopies(book.getNumOfCopies() - 1);
 				books.add(book);
-				response.setBooks(books);
+				bookResponseVO.setBooks(books);
+				response.setBookResponseVO(bookResponseVO);
 				return response;
 			}
 
@@ -78,7 +82,8 @@ public class BookServiceHandler implements IHandler {
 	 * 
 	 * 
 	 */
-	public ResponseWrapper search(RequestWrapper requestBooks) {
+	public EnhancedResponseWrapper search(RequestWrapper requestBooks) {
+		BookResponseVO bookResponseVO = new BookResponseVO();
 
 		System.out.println("Into the search method of book handler");
 		bookMap = LibraryStore.getStoreInstance().getLibraryMap();
@@ -96,7 +101,8 @@ public class BookServiceHandler implements IHandler {
 				Books book = (Books) bookMap.get(key);
 				if (book.getNumOfCopies() != 0) {
 					books.add(book);
-					response.setBooks(books);
+					bookResponseVO.setBooks(books);
+					response.setBookResponseVO(bookResponseVO);					
 					return response;
 				}
 			}

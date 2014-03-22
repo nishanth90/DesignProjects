@@ -7,7 +7,7 @@ public enum DIGITALMEDIA {
 	
 public static String getType(String category) {
 		
-		for(PRINTMEDIA value:PRINTMEDIA.values()) {
+		for(DIGITALMEDIA value:DIGITALMEDIA.values()) {
 			
 			if(value.equals(category.toUpperCase()))
 				return value.toString();

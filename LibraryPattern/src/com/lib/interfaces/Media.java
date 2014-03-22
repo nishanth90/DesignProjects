@@ -3,6 +3,7 @@
  */
 package com.lib.interfaces;
 
+import com.lib.wrappers.EnhancedResponseWrapper;
 import com.lib.wrappers.RequestWrapper;
 import com.lib.wrappers.ResponseWrapper;
 
@@ -21,10 +22,10 @@ public interface Media {
 
 	
 	
-	public ResponseWrapper searchMedia(RequestWrapper request);
+	public EnhancedResponseWrapper searchMedia(RequestWrapper request);
 	
 	
-	public ResponseWrapper rentMedia(RequestWrapper request);
+	public EnhancedResponseWrapper rentMedia(RequestWrapper request);
 	
 	public Media display(); 
 	

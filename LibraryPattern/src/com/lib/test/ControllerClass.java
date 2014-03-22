@@ -9,6 +9,7 @@ import com.lib.DomainObjects.VCD;
 import com.lib.interfaces.Media;
 import com.lib.loadData.DataLoader;
 import com.lib.utility.LibraryFactory;
+import com.lib.wrappers.EnhancedResponseWrapper;
 import com.lib.wrappers.RequestWrapper;
 import com.lib.wrappers.ResponseWrapper;
 
@@ -29,7 +30,7 @@ public class ControllerClass {
 
 	public static void main(String[] args) {
 
-		ResponseWrapper response = null;
+		EnhancedResponseWrapper response = null;
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Please enter the category for the Library operation");
 		System.out.println("1>Books");
@@ -60,27 +61,27 @@ public class ControllerClass {
 		}
 
 		if (response != null) {
-			if (response.getBooks() != null) {
-				List<Books> books = response.getBooks();
+			if (response.getBookResponseVO()!=null && response.getBookResponseVO().getBooks() != null) {
+				List<Books> books = response.getBookResponseVO().getBooks();
 				for (Books book : books) {
 					System.out.println("The response printed is");
 					System.out.println(book.toString());
 				}
 			}
-			if (response.getVcds() != null) {
-				List<VCD> vcds = response.getVcds();
+			if (response.getVcdResponseVO()!= null && response.getVcdResponseVO().getVcds() != null) {
+				List<VCD> vcds = response.getVcdResponseVO().getVcds();
 				for (VCD vcd : vcds) {
 					System.out.println("The response printed is");
 					System.out.println(vcd.toString());
 				}
 			}
-			if (response.getMagzines() != null) {
+			/*if (response.getMagzines() != null) {
 				List<Magzines> magzns = response.getMagzines();
 				for (Magzines magz : magzns) {
 					System.out.println("The response printed is");
 					System.out.println(magz.toString());
 				}
-			}
+			}*/
 
 		}
 

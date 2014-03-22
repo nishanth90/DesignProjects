@@ -1,15 +1,16 @@
 package com.lib.interfaces;
 
+import com.lib.wrappers.EnhancedResponseWrapper;
 import com.lib.wrappers.RequestWrapper;
 import com.lib.wrappers.ResponseWrapper;
 
 public interface IHandler {
 	
 	
-	public ResponseWrapper rent(RequestWrapper request);
+	public EnhancedResponseWrapper rent(RequestWrapper request);
 
 
-	public ResponseWrapper search(RequestWrapper request);
+	public EnhancedResponseWrapper search(RequestWrapper request);
 
 
 }

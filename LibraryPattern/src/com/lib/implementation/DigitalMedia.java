@@ -1,6 +1,7 @@
 package com.lib.implementation;
 
 import com.lib.interfaces.Media;
+import com.lib.wrappers.EnhancedResponseWrapper;
 import com.lib.wrappers.RequestWrapper;
 import com.lib.wrappers.ResponseWrapper;
 
@@ -15,13 +16,13 @@ public class DigitalMedia implements Media{
 	
 	
 	@Override
-	public ResponseWrapper searchMedia(RequestWrapper request) {
+	public EnhancedResponseWrapper searchMedia(RequestWrapper request) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseWrapper rentMedia(RequestWrapper request) {
+	public EnhancedResponseWrapper rentMedia(RequestWrapper request) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -6,6 +6,7 @@ package com.lib.implementation;
 import com.lib.interfaces.IHandler;
 import com.lib.interfaces.Media;
 import com.lib.utility.HandlerFactory;
+import com.lib.wrappers.EnhancedResponseWrapper;
 import com.lib.wrappers.RequestWrapper;
 import com.lib.wrappers.ResponseWrapper;
 
@@ -34,19 +35,19 @@ public class PrintMedia implements Media{
 	 * @see com.lib.interfaces.Media#searchMedia(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public ResponseWrapper searchMedia(RequestWrapper request ) {
+	public EnhancedResponseWrapper searchMedia(RequestWrapper request ) {
 
 		IHandler handler = HandlerFactory.getHandler(request.getcategoryType());
 						
-		ResponseWrapper response = handler.search(request);
+		EnhancedResponseWrapper response = handler.search(request);
 		return response;
 	}
 
 	@Override
-	public ResponseWrapper rentMedia(RequestWrapper request) {
+	public EnhancedResponseWrapper rentMedia(RequestWrapper request) {
 
 		IHandler handler = HandlerFactory.getHandler(request.getcategoryType());
-		ResponseWrapper response = handler.search(request);
+		EnhancedResponseWrapper response = handler.search(request);
 		return response;
 
 	}

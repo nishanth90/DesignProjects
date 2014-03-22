@@ -7,7 +7,9 @@ import java.util.Map;
 import com.lib.DomainObjects.DomainObjects;
 import com.lib.DomainObjects.VCD;
 import com.lib.interfaces.IHandler;
+import com.lib.response.VCDResponseVO;
 import com.lib.store.LibraryStore;
+import com.lib.wrappers.EnhancedResponseWrapper;
 import com.lib.wrappers.RequestWrapper;
 import com.lib.wrappers.ResponseWrapper;
 
@@ -27,11 +29,12 @@ import com.lib.wrappers.ResponseWrapper;
 public class VCDServiceHandler implements IHandler{
 	
 	private Map<String,? super DomainObjects> VCDMap = null;
-	private ResponseWrapper response = new ResponseWrapper();
+	private EnhancedResponseWrapper response = new EnhancedResponseWrapper();
 	
 
 	@Override
-	public ResponseWrapper rent(RequestWrapper request) {
+	public EnhancedResponseWrapper rent(RequestWrapper request) {
+		VCDResponseVO vcdResponseVO = new VCDResponseVO();
 
 		VCDMap = LibraryStore.getStoreInstance().getLibraryMap();
 
@@ -42,7 +45,8 @@ public class VCDServiceHandler implements IHandler{
 			        if(vcd.getNumOfCopies() != 0){
 					vcd.setNumOfCopies(vcd.getNumOfCopies()-1);
 					vcds.add(vcd);
-					response.setVcds(vcds);
+					vcdResponseVO.setVcds(vcds);
+					response.setVcdResponseVO(vcdResponseVO);
 					return response;
 					}
 									
@@ -59,9 +63,9 @@ public class VCDServiceHandler implements IHandler{
 	 * 
 	 */
 	@Override
-	public ResponseWrapper search(RequestWrapper request) {
+	public EnhancedResponseWrapper search(RequestWrapper request) {
 		
-		
+		VCDResponseVO vcdResponseVO = new VCDResponseVO();
 		VCDMap = LibraryStore.getStoreInstance().getLibraryMap();
 		List<VCD> vcds = new ArrayList<>();
 		String key = request.getSearchKey();
@@ -70,7 +74,8 @@ public class VCDServiceHandler implements IHandler{
 			        if(vcd.getNumOfCopies() != 0){
 					vcd.setNumOfCopies(vcd.getNumOfCopies()-1);
 					vcds.add(vcd);
-					response.setVcds(vcds);
+					vcdResponseVO.setVcds(vcds);
+					response.setVcdResponseVO(vcdResponseVO);
 					return response;
 					}
 									
