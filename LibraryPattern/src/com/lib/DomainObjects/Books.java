@@ -9,8 +9,6 @@ package com.lib.DomainObjects;
  *
  */
 public class Books extends DomainObjects{
-
-	
 	
 	private String author;
 	
@@ -77,9 +75,6 @@ public class Books extends DomainObjects{
 	public String toString() {
 		// TODO Auto-generated method stub
 		return " BookName: "+name+" ISBN: "+ISBN+" Num of Copies: "+numOfCopies;
-		
-		
-		
 	}
 	
 	@Override
@@ -93,14 +88,16 @@ public class Books extends DomainObjects{
 		
 	      if(obj instanceof Books) {
 	    	 Books object = (Books)obj;
-	    	
 	    	 return (this.getISBN().equals(object.getISBN()));
-
-	      
 	      }
 	      else
 	  	  return false;
 	 	    	
+	}
+
+	@Override
+	protected void generateKey() {
+		this.key = this.getAuthor()+"$"+this.getISBN()+"$"+this.getName();	
 	}
 	
 }

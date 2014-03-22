@@ -49,6 +49,9 @@ public class VCD extends DomainObjects{
 	
 	private int numOfCopies;
 
-	
+	@Override
+	protected void generateKey() {
+		this.key = this.getAlbumName()+"$"+this.getArtist();
+	}	
 	
 }

@@ -81,5 +81,11 @@ public class Magzines extends DomainObjects{
 	 	    	
 	}
 
+	@Override
+	protected void generateKey() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }
