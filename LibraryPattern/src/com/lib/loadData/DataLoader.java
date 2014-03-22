@@ -68,38 +68,12 @@ public class DataLoader {
 		vcd1.setAvailable(value);
 		vcd1.setNumOfCopies(1);
 		
-		myStore.put(bookKeyGenerator(book1), book1);
-		myStore.put(bookKeyGenerator(book2),book2);	
-		myStore.put(vcdKeyGenerator(vcd1), vcd1);
+		myStore.put(book1.getKey(), book1);
+		myStore.put(book2.getKey(), book2);	
+		myStore.put(vcd1.getKey(), vcd1);
 		
 		store.setLibraryMap(myStore);
 		
 	}
-	
-	/**
-	 * 
-	 * Generates the key for books storage in the map
-	 * 
-	 * @author Nishanth
-	 * @param Book Object
-	 * **/
-	
-	public static String bookKeyGenerator(Books book){		
-		return book.getAuthor()+"$"+book.getISBN()+"$"+book.getName();
-	}
-	
-	
-	/**
-	 * 
-	 * Generates the key for VCD storage in the map
-	 * 
-	 * @author Nishanth
-	 * @param VCD Object
-	 * **/
-	
-	public static String vcdKeyGenerator(VCD vcd){		
-		return vcd.getAlbumName()+"$"+vcd.getArtist();
-	}
-	
 	
 }
