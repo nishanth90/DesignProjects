@@ -12,18 +12,11 @@ import com.lib.response.BookResponseVO;
 import com.lib.store.LibraryStore;
 import com.lib.wrappers.EnhancedResponseWrapper;
 import com.lib.wrappers.RequestWrapper;
-import com.lib.wrappers.ResponseWrapper;
 
 /**
+ * search for books rent books add books in a common data collection
  * 
- * This class will have :
- * 
- * 
- * search for books rent books add books
- * 
- * in a common data collection or DB(No Sql)
- * 
- * 
+ * @author Nishanth
  * 
  * 
  */
@@ -34,36 +27,16 @@ public class BookServiceHandler implements IHandler {
 
 	/*
 	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * public void addBooks(Books books) { if(bookSet.contains(books)){
-	 * for(Books book:bookSet){ if(book.equals(books))
-	 * book.setNumOfCopies(book.getNumOfCopies()+1); } } else{
-	 * books.setAvailable(true); books.setNumOfCopies(1); bookSet.add(books); }
-	 * 
-	 * 
-	 * }
+	 * Rent Book method
 	 */
-
-	/*
-	 * 
-	 * 
-	 */
-	public EnhancedResponseWrapper rent(RequestWrapper requestBooks) {
-		
+	public EnhancedResponseWrapper rent(RequestWrapper requestBooks) {		
 		BookResponseVO bookResponseVO = new BookResponseVO();
 		bookMap = LibraryStore.getStoreInstance().getLibraryMap();
-		List<Books> books = new ArrayList<Books>();
-		String searchkey = requestBooks.getSearchKey();
-		Set<String> keys = bookMap.keySet();
-		for (String key : keys) {
-			System.out.println(key);
-			if (key.contains(searchkey))
-				;
-
-			Books book = (Books) bookMap.get(key);
+		EnhancedResponseWrapper response = search(requestBooks);	
+		if(response != null){
+			bookResponseVO = response.getBookResponseVO();
+			List<Books> books = bookResponseVO.getBooks();			
+			Books book = (Books) bookMap.get(requestBooks.getSearchKey());
 			if (book.getNumOfCopies() != 0) {
 				book.setNumOfCopies(book.getNumOfCopies() - 1);
 				books.add(book);
@@ -71,10 +44,8 @@ public class BookServiceHandler implements IHandler {
 				response.setBookResponseVO(bookResponseVO);
 				return response;
 			}
-
 		}
 		return null;
-
 	}
 
 	/**
@@ -84,25 +55,18 @@ public class BookServiceHandler implements IHandler {
 	 */
 	public EnhancedResponseWrapper search(RequestWrapper requestBooks) {
 		BookResponseVO bookResponseVO = new BookResponseVO();
-
 		System.out.println("Into the search method of book handler");
 		bookMap = LibraryStore.getStoreInstance().getLibraryMap();
-
 		List<Books> books = new ArrayList<Books>();
 		String searchkey = requestBooks.getSearchKey();
-
 		Set<String> keys = bookMap.keySet();
 		for (String key : keys) {
-			System.out.println(key);
-			if (key.contains(searchkey))
-			{
-				System.out.println("found it");
-
+			if (key.contains(searchkey)) {
 				Books book = (Books) bookMap.get(key);
 				if (book.getNumOfCopies() != 0) {
 					books.add(book);
 					bookResponseVO.setBooks(books);
-					response.setBookResponseVO(bookResponseVO);					
+					response.setBookResponseVO(bookResponseVO);
 					return response;
 				}
 			}
