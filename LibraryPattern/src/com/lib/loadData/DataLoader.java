@@ -24,8 +24,7 @@ public class DataLoader {
 	
 	private DataLoader(){}
 	
-	public static DataLoader getInstance(){
-		
+	public static DataLoader getInstance(){		
 		return dataLoader;
 	}
 	
