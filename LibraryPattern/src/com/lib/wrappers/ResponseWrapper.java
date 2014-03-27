@@ -17,7 +17,7 @@ package com.lib.wrappers;
 
 		
 		
-		List<Books> books = new ArrayList<>();
+		List<Books> books = new ArrayList<Books>();
 		public List<Books> getBooks() {
 			return books;
 		}
@@ -36,8 +36,8 @@ package com.lib.wrappers;
 		public void setVcds(List<VCD> vcds) {
 			this.vcds = vcds;
 		}
-		List<Magzines> magzines = new ArrayList<>();
-		List<VCD> vcds = new ArrayList<>();
+		List<Magzines> magzines = new ArrayList<Magzines>();
+		List<VCD> vcds = new ArrayList<VCD>();
 		
 		
 		@Override
