@@ -7,7 +7,7 @@ import com.lib.DomainObjects.Books;
 
 public class BookResponseVO {
 	
-	List<Books> books = new ArrayList<>();
+	List<Books> books = new ArrayList<Books>();
 	public List<Books> getBooks() {
 		return books;
 	}
