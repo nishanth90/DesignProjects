@@ -63,7 +63,7 @@ public class VCDServiceHandler implements IHandler{
 	public EnhancedResponseWrapper search(RequestWrapper request) {
 		VCDResponseVO vcdResponseVO = new VCDResponseVO();
 		VCDMap = LibraryStore.getStoreInstance().getLibraryMap();
-		List<VCD> vcds = new ArrayList<>();
+		List<VCD> vcds = new ArrayList<VCD>();
 		String key = request.getSearchKey();
 		if (VCDMap.containsKey(key)) {
 			VCD vcd = (VCD) VCDMap.get(key);
