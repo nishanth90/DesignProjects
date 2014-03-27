@@ -19,7 +19,7 @@ import com.lib.store.LibraryStore;
 public class DataLoader {
 	
 	private static final DataLoader dataLoader = new DataLoader();
-	private static Map<String,? super DomainObjects> myStore = new HashMap<>();
+	private static Map<String,? super DomainObjects> myStore = new HashMap();
 	private static LibraryStore store = LibraryStore.getStoreInstance();
 	
 	private DataLoader(){}
